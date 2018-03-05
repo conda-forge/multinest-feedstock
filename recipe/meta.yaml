@@ -6,7 +6,7 @@ source:
   git_url: https://github.com/JohannesBuchner/MultiNest
 
 build:
-   number: 2
+   number: 0
    skip: true  # [win]
 
 requirements:
