@@ -6,7 +6,7 @@ source:
   git_url: https://github.com/JohannesBuchner/MultiNest
 
 build:
-   number: 1
+   number: 0
    skip: true  # [win]
 
 requirements:
@@ -15,27 +15,32 @@ requirements:
     - toolchain
     - cmake
     - lapack
-    - gcc
-    - libgfortran
+    - openblas
+    - gcc  # [osx]
+    - libgfortran  # [linux]
     - mpich
 
   run:
     - lapack
+    - openblas
     - mpich
-    - libgcc
     - libgfortran
 
 test:
   commands:
-    - bash -c "cd ${PREFIX}/bin ; gaussian"
+    - bash -c "cd ${PREFIX}/bin ; mkdir chains ; gaussian"
     - test -f ${PREFIX}/lib/libmultinest.so  # [linux]
     
     - test -f ${PREFIX}/lib/libmultinest.dylib  # [osx]
     
     - test -f ${PREFIX}/include/multinest.h
+    - python -c "import pymultinest"
     
     - conda inspect linkages --show-files -p $PREFIX multinest  # [not win]
     - conda inspect objects -p $PREFIX multinest  # [osx]
+  
+  requires:
+    - pymultinest
 
 
 about:
