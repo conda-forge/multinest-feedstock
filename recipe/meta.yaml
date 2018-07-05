@@ -4,42 +4,42 @@ package:
 
 source:
   fn: v3.10.tar.gz
-  url: https://github.com/JohannesBuchner/MultiNest/archive/v3.10.tar.gz 
+  url: https://github.com/JohannesBuchner/MultiNest/archive/v3.10.tar.gz
 
 build:
-   number: 2
+   number: 3
    skip: true  # [win]
 
 requirements:
 
   build:
-    - toolchain
     - cmake
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - lapack
     - openblas
-    - gcc  # [osx]
-    - libgfortran  # [linux]
     - mpich
 
   run:
     - lapack
     - openblas
     - mpich
-    - libgfortran
 
 test:
   commands:
     - bash -c "cd ${PREFIX}/bin ; mkdir chains ; gaussian"
     - test -f ${PREFIX}/lib/libmultinest.so  # [linux]
-    
+
     - test -f ${PREFIX}/lib/libmultinest.dylib  # [osx]
-    
+
     - test -f ${PREFIX}/include/multinest.h
     - python -c "import pymultinest"
-    
+
     - conda inspect linkages --show-files -p $PREFIX multinest  # [not win]
     - conda inspect objects -p $PREFIX multinest  # [osx]
-  
+
   requires:
     - pymultinest
 
