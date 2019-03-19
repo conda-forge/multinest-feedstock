@@ -7,7 +7,7 @@ source:
   url: https://github.com/JohannesBuchner/MultiNest/archive/v3.10.tar.gz
 
 build:
-   number: 3
+   number: 4
    skip: true  # [win]
 
 requirements:
@@ -18,13 +18,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - lapack
-    - openblas
+    - libblas
+    - libcblas
     - mpich
 
   run:
-    - lapack
-    - openblas
     - mpich
 
 test:
