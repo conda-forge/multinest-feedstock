@@ -1,10 +1,12 @@
+{% set version="3.10" %}
+
 package:
   name: multinest
-  version: "3.10"
+  version: {{ version }}
 
 source:
-  fn: v3.10.tar.gz
-  url: https://github.com/JohannesBuchner/MultiNest/archive/v3.10.tar.gz
+  url: https://github.com/JohannesBuchner/MultiNest/archive/v{{ version }}.tar.gz
+  sha256: 8900588ddb4ece8ec09bb1cc4df80e3f02157b278176635d9ef9cdc1992559ce
 
 build:
    number: 4
@@ -19,9 +21,8 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - libblas
-    - libcblas
+    - liblapack
     - mpich
-
   run:
     - mpich
 
