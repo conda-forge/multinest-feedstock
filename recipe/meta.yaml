@@ -1,4 +1,16 @@
 {% set version = "3.10" %}
+{% set build = 8 %}
+
+# set mpi (prioritise nompi via build number)
+{% set mpi = mpi or "nompi" %}
+{% if mpi == "nompi" %}
+{% set build = build + 100 %}
+{% set mpi_prefix = "nompi" %}
+{% set build_pin = "" %}
+{% else %}
+{% set mpi_prefix = "mpi_" + mpi %}
+{% set build_pin = mpi_prefix + "_*" %}
+{% endif %}
 
 package:
   name: multinest
@@ -9,8 +21,9 @@ source:
   sha256: 8900588ddb4ece8ec09bb1cc4df80e3f02157b278176635d9ef9cdc1992559ce
 
 build:
-   number: 7
-   skip: true  # [win]
+  number: {{ build }}
+  skip: true  # [win]
+  string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
 
 requirements:
 
@@ -23,9 +36,9 @@ requirements:
     - libblas
     - libcblas
     - liblapack
-    - mpich
+    - {{ mpi }}  # [mpi != 'nompi']
   run:
-    - mpich
+    - {{ mpi }}  # [mpi != 'nompi']
 
 test:
   commands:
