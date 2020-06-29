@@ -21,8 +21,9 @@ source:
   sha256: 8900588ddb4ece8ec09bb1cc4df80e3f02157b278176635d9ef9cdc1992559ce
 
 build:
-   number: {{ build }}
-   skip: true  # [win]
+  number: {{ build }}
+  skip: true  # [win]
+  string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
 
 requirements:
 
