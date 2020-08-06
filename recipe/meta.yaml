@@ -1,4 +1,4 @@
-{% set version = "3.10" %}
+{% set version = "3.10b" %}
 
 package:
   name: multinest
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/JohannesBuchner/MultiNest/archive/v{{ version }}.tar.gz
-  sha256: 8900588ddb4ece8ec09bb1cc4df80e3f02157b278176635d9ef9cdc1992559ce
+  sha256: 3ee341a063ef89bcbbdb9f4244f1469bc718814af30beaa1582617f7a36deada
 
 build:
-   number: 7
+   number: 0
    skip: true  # [win]
 
 requirements:
