@@ -15,9 +15,10 @@ build:
 requirements:
 
   build:
-    - cmake
+    - cmake=3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - libblas
@@ -45,7 +46,7 @@ test:
 about:
   home: https://github.com/JohannesBuchner/MultiNest
   license: custom
-  license_file: license.pdf
+  license_file: LICENCE
   summary: MultiNest is a Bayesian inference tool which calculates the evidence and explores the parameter space which may contain multiple posterior modes and pronounced (curving) degeneracies in moderately high dimensions.
 
 extra:
