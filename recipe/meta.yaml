@@ -37,8 +37,6 @@ test:
     - test -f ${PREFIX}/include/multinest.h
     - python -c "import pymultinest"
 
-    - conda inspect linkages --show-files -p $PREFIX multinest  # [not win]
-    - conda inspect objects -p $PREFIX multinest  # [osx]
 
   requires:
     - pymultinest
