@@ -16,6 +16,7 @@ requirements:
 
   build:
     - cmake <4
+    - make
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
