@@ -5,14 +5,7 @@ if [ "$(uname)" == "Darwin" ]; then
     echo "BUILD TYPE is Darwin"
 
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} -DLAPACK_LIBRARIES=${PREFIX}/lib/liblapack.dylib -DBLAS_LIBRARIES=${PREFIX}/lib/libcblas.dylib \
-          -DCMAKE_C_COMPILER=clang \
-          -DCMAKE_C_FLAGS=${CFLAGS} \
-          -DCMAKE_CXX_COMPILER=clang++ \
-          -DCMAKE_CXX_FLAGS=${CXXFLAGS} \
-          -DCMAKE_CXX_STANDARD=98 \
-          -DCMAKE_Fortran_FLAGS="-std=legacy" \
-          ..
+    cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} -DLAPACK_LIBRARIES=${PREFIX}/lib/liblapack.dylib -DBLAS_LIBRARIES=${PREFIX}/lib/libcblas.dylib -DCMAKE_Fortran_FLAGS="-std=legacy" ..
     make VERBOSE=1
     make install
     
