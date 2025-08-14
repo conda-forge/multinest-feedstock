@@ -26,6 +26,7 @@ patents or other proprietary rights of others.
 2. FF&MH shall not be held liable for direct, indirect, incidental or consequential
 damages arising from any claim by User or any third party with respect to uses
 allowed under this Agreement, or from any use of the Software.
+
 3. User agrees to fully indemnify and hold harmless FF&MH of the original work
 from and against any and all claims, demands, suits, losses, damages, costs and
 expenses arising out of the User's use of the Software, including, without limitation,
