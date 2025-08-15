@@ -9,15 +9,17 @@ source:
   sha256: 8900588ddb4ece8ec09bb1cc4df80e3f02157b278176635d9ef9cdc1992559ce
 
 build:
-   number: 8
+   number: 9
    skip: true  # [win]
 
 requirements:
 
   build:
-    - cmake
+    - cmake <4
+    - make
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
   host:
     - libblas
@@ -37,8 +39,6 @@ test:
     - test -f ${PREFIX}/include/multinest.h
     - python -c "import pymultinest"
 
-    - conda inspect linkages --show-files -p $PREFIX multinest  # [not win]
-    - conda inspect objects -p $PREFIX multinest  # [osx]
 
   requires:
     - pymultinest
@@ -47,10 +47,11 @@ test:
 about:
   home: https://github.com/JohannesBuchner/MultiNest
   license: custom
-  license_file: license.pdf
+  license_file: LICENSE.txt
   summary: MultiNest is a Bayesian inference tool which calculates the evidence and explores the parameter space which may contain multiple posterior modes and pronounced (curving) degeneracies in moderately high dimensions.
 
 extra:
   recipe-maintainers:
     - giacomov
     - farhanferoz
+    - Nicholaswogan
